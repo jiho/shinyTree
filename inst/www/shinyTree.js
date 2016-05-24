@@ -26,7 +26,14 @@ var shinyTree = function(){
       var tree = $(el).jstree({'core' : {
         "check_callback" : ($elem.data('st-dnd') === 'TRUE'),
         'themes': {'name': $elem.data('st-theme'), 'responsive': true }
-      },plugins: plugins});
+      },
+      'checkbox' : {
+        "three_state" : ($elem.data('st-three_state') === 'TRUE'),
+        "tie_selection" : ($elem.data('st-tie_selection') === 'TRUE'),
+        "whole_node" : ($elem.data('st-whole_node') === 'TRUE')
+      }, 
+      plugins: plugins
+      });
     }
   });
   Shiny.outputBindings.register(treeOutput, 'shinyTree.treeOutput');
@@ -147,6 +154,14 @@ var shinyTree = function(){
       $(el).on("move_node.jstree", function(e){
         callback();
       })
+
+       $(el).on("uncheck_node.jstree", function(e){
+        callback();
+      })
+       $(el).on("check_node.jstree", function(e){
+        callback();
+      })
+      
     },
     unsubscribe: function(el) {
       $(el).off(".jstree");
@@ -155,6 +170,7 @@ var shinyTree = function(){
       // This receives messages of type "updateTree" from the server.
       if(message.type == 'updateTree' && typeof message.data !== 'undefined') {
           $(el).jstree(true).settings.core.data = JSON.parse(message.data);
+
           $(el).jstree(true).refresh(true, true);
       }
     }

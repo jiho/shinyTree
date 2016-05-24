@@ -62,6 +62,12 @@ getJSON <- function(node){
     attrib <- c(attrib, "\"selected\": true")
   }
   
+  # Handle 'cheked' attribute
+  checked <- attr(node, "stchecked")
+  if (!is.null(checked) && checked){
+    attrib <- c(attrib, "\"checked\": true")
+  }
+  
   # Handle 'disabled' attribute
   disabled <- attr(node, "stdisabled")
   if (!is.null(disabled) && disabled){

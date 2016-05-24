@@ -53,6 +53,9 @@ supplementAttr <- function(ret, json){
   if (json$state$opened != FALSE){
     attr(ret, "stopened") <- json$state$opened
   }
+  if (!is.null(json$state$checked) &&  json$state$checked!= FALSE){
+    attr(ret, "stchecked") <- json$state$checked
+  }
   if (exists('stid', where=json)) {
     attr(ret, "stid") <- json$stid
   }
@@ -62,5 +65,6 @@ supplementAttr <- function(ret, json){
   if (exists('id', where=json)) {
     attr(ret, "id") <- json$id
   }
+  
   ret
 }

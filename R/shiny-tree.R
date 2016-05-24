@@ -11,9 +11,12 @@
 #' @param dragAndDrop If \code{TRUE}, will allow the user to rearrange the nodes in the
 #' tree.
 #' @param theme jsTree theme, one of \code{default}, \code{default-dark}, or \code{proton}.
+#' #' @param three_state If \code{TRUE}, enables three-state checkboxes.
+#' @param whole_node If \code{TRUE}, clicking anywhere on the node acts as clicking on the checkbox.
+#' @param tie_selection If \code{TRUE}, checkboxes are bound to the general tree selection.
 #' @seealso \code{\link{renderTree}}
 #' @export
-shinyTree <- function(outputId, checkbox=FALSE, search=FALSE, dragAndDrop=FALSE, theme="default"){
+shinyTree <- function(outputId, checkbox=FALSE, search=FALSE, dragAndDrop=FALSE, theme="default", three_state=TRUE, whole_node=TRUE, tie_selection=TRUE){
   searchEl <- shiny::div("")
   if (search == TRUE){
     search <- paste0(outputId, "-search-input")
@@ -47,7 +50,9 @@ shinyTree <- function(outputId, checkbox=FALSE, search=FALSE, dragAndDrop=FALSE,
         `data-st-checkbox`=checkbox, 
         `data-st-search`=is.character(search),
         `data-st-dnd`=dragAndDrop,
-        `data-st-theme`=theme
-        )
+        `data-st-theme`=theme,
+        `data-st-three_state`=three_state,
+        `data-st-tie_selection`=tie_selection,
+        `data-st-whole_node`=whole_node)
   )
 }

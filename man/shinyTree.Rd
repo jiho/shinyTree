@@ -5,7 +5,8 @@
 \title{Create a Shiny Tree}
 \usage{
 shinyTree(outputId, checkbox = FALSE, search = FALSE, dragAndDrop = FALSE,
-  theme = "default")
+  theme = "default", three_state = TRUE, whole_node = TRUE,
+  tie_selection = TRUE)
 }
 \arguments{
   \item{outputId}{The ID associated with this element}
@@ -18,7 +19,11 @@ shinyTree(outputId, checkbox = FALSE, search = FALSE, dragAndDrop = FALSE,
   search field.} \item{dragAndDrop}{If \code{TRUE}, will allow
   the user to rearrange the nodes in the tree.} \item{theme}
   {jsTree theme, one of \code{default}, \code{default-dark},
-  or \code{proton}.}
+  or \code{proton}. #' @param three_state If \code{TRUE},
+  enables three-state checkboxes.} \item{whole_node}{If
+  \code{TRUE}, clicking anywhere on the node acts as clicking
+  on the checkbox.} \item{tie_selection}{If \code{TRUE},
+  checkboxes are bound to the general tree selection.}
 }
 \description{
 This creates a spot in your Shiny UI for a shinyTree which

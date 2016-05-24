@@ -1,3 +1,5 @@
+This fork of shinyTree integrates jsTree 3.2.1 and enables its "untie-checkboxes" feature.
+
 shinyTree
 ==========
 
