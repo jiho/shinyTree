@@ -1,0 +1,8 @@
+title: Shinytree
+description: Shiny integration with the jsTree library
+google_analytics: UA-43159940-1
+show_downloads: true
+theme: jekyll-theme-hacker
+
+gems:
+  - jekyll-mentions
